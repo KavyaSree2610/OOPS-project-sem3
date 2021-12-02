@@ -3,18 +3,19 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "Medicine.cpp"
 
 using namespace std;
 // Global declaration of first name and last name
-string arrfn[26] = {"Amelia", "Beatta", "Camille", "Dalialah","Evelyn",
-                    "Fatyma", "Garnett","Harmoni", "Ileana", "Jainel", "Kalidas", "Luna",
-                     "Mahavira", "Nartana","Oliver", "Patrick", "Quiterie", "Raimundo",
-                      "Scarlett", "Teresa","Ulnrich", "Valencia", "Wachowicz", "Xiang", "Yacovone", "Zadra"};
+string arrfn[26] = {"Amelia", "Beatta", "Camille", "Dalialah", "Evelyn",
+                    "Fatyma", "Garnett", "Harmoni", "Ileana", "Jainel", "Kalidas", "Luna",
+                    "Mahavira", "Nartana", "Oliver", "Patrick", "Quiterie", "Raimundo",
+                    "Scarlett", "Teresa", "Ulnrich", "Valencia", "Wachowicz", "Xiang", "Yacovone", "Zadra"};
 string arrln[26] = {"Abella", "Batista", "Cristina", "Devorah", "Edith",
-                    "Franciska", "Gorge","Hermoine", "Isebella", "Jane",
-                     "Katrina", "Lisbon", "Martha", "Nick","O'conner", "Priya",
-                      "Quin", "Rregina", "Samnatha", "Tejaswini","Urvasi", "Varsha",
-                       "Whitney", "Xiang", "Yolanda", "Zahra"};
+                    "Franciska", "Gorge", "Hermoine", "Isebella", "Jane",
+                    "Katrina", "Lisbon", "Martha", "Nick", "O'conner", "Priya",
+                    "Quin", "Rregina", "Samnatha", "Tejaswini", "Urvasi", "Varsha",
+                    "Whitney", "Xiang", "Yolanda", "Zahra"};
 
 /*----------------------------------------------------------------------------------------------- */
 
@@ -222,7 +223,7 @@ private:
     long long int contactNo;
     int date, d, m, y;
     int ns = 0;
-    int arrS[38] = {0};
+    int arrS[35] = {0};
 
 public:
     void Create();
@@ -262,7 +263,7 @@ void person::random()
     {
         d = 1 + rand() % 30;
     }
-    date = y*10000+m*100+d;
+    date = y * 10000 + m * 100 + d;
 }
 
 void person::RgenerateSD()
@@ -289,7 +290,7 @@ void person::printdata()
     cout << "\t\t\tLast name :" << lastName << endl;
     cout << "\t\t\tFull name :" << fullName << endl;
     cout << "\t\t\tContact no. :" << contactNo << endl;
-    cout << "\t\t\tDate of order :" << d << "-"<< m << "-"<< y << endl;
+    cout << "\t\t\tDate of order :" << d << "-" << m << "-" << y << endl;
     // no. of sumptons
     ns = 0;
     for (int i = 0; i < 38; ++i)
@@ -318,6 +319,7 @@ public:
     void menu()
     {
         int option;
+        Medicine m;
         symptom SYMP;
         person pa;
     Start:
@@ -348,6 +350,7 @@ public:
 
         case 2:
             // tablet data
+            m.showMedicinesData();
             goto Start;
             break;
 
@@ -378,6 +381,7 @@ public:
     {
         int option;
         person pr;
+        Medicine md;
     Start:
         cout << "\n================================================================================================" << endl;
         cout << "\t\t\t-----------------------------" << endl;
@@ -405,6 +409,7 @@ public:
 
         case 2:
             // medicine data
+            md.showMedicinesData();
             goto Start;
             break;
 
@@ -435,7 +440,6 @@ public:
         cout << "\t\t\t|        IIITs Pharmacy      |" << endl;
         cout << "\t\t\t-----------------------------" << endl;
         cout << "\t\t\t 1. Total Transactions Made" << endl;
-        cout << "\t\t\t 2. Latest Transaction" << endl;
         cout << "\t\t\t 9. Back" << endl;
         cout << "\t\t\t 0. Exit" << endl;
         cout << "\t\t\t---------------------------" << endl;
@@ -452,12 +456,6 @@ public:
             // Total Transactions Made
             goto Start;
             break;
-
-        case 2:
-            // Latest Transaction
-            goto Start;
-            break;
-
         case 9:
             // back
             break;
